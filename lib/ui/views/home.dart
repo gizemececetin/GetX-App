@@ -11,9 +11,8 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home> {
   final GetData controller = Get.put(GetData());
-  bool isClick = false;
-
-  //var number = 0.obs;
+  var isClick = false.obs;
+  var number = 0.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +26,24 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
            // Obx(() => Text("Sayı :$number")),
-            isClick? Container():
+            Obx(() =>
+            isClick.value? Container():
             RaisedButton(
               child: Text("Get Data"),
               onPressed: () {
-                controller.getPosts();
-                setState(() {
-                  isClick = true;
-                });
+                Get.find<GetData>().getPosts();
+                isClick.value = true;
+
               },
             ),
-            isClick ?
+
+            ),
+            Obx(() =>
+            isClick.value ?
             Expanded(
               child: GetBuilder<GetData>(
+                id: 'textId',
+                init: GetData(),
                 builder: (_) {
                   return ListView.builder(
                     itemCount: controller.postModels.length,
@@ -50,6 +54,7 @@ class _HomeState extends State<Home> {
                 },
               ),
             ): Container(),
+            )
           ],
         ),),)
     ;}

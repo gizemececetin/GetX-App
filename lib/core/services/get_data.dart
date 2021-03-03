@@ -11,7 +11,7 @@ class GetData extends GetxController {
   List<PostModel> postModels = [];
   @override
   void onInit() {
-    print("onInit");// called just before the Controller is deleted from memory
+    print("onInit");
     super.onInit();
   }
 
@@ -35,12 +35,12 @@ class GetData extends GetxController {
       default:
     }
 
-    update(); //GetX için
+    update(['textId']); //GetX için
   }
 
   @override
   void onClose() {
-    print("onClose");// called just before the Controller is deleted from memory
+    print("onClose");
     super.onClose();
   }
 }
