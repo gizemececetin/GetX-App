@@ -10,7 +10,7 @@ class DemoGetxApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Getx App',
+      title: 'GetX App',
       theme: ThemeData(
 
         primarySwatch: Colors.deepPurple,
